@@ -126,15 +126,26 @@ function makeImmutable(obj) {
  *    makeWord({ H:[0], e: [1], l: [2, 3, 8], o: [4, 6], W:[5], r:[7], d:[9]}) => 'HelloWorld'
  */
 function makeWord(lettersObject) {
-  const lastIndex = Object.values(lettersObject).flat().length;
-  const res = Array.from({ length: lastIndex }).fill('');
+  const positions = Object.entries(lettersObject).reduce(
+    (acc, [letter, positionsArray]) => {
+      positionsArray.forEach((position) => {
+        acc[position] = letter;
+      });
+      return acc;
+    },
+    []
+  );
+  return positions.join('');
 
-  Object.entries(lettersObject).forEach(([letter, positions]) => {
-    positions.forEach((position) => {
-      res[position] = letter;
-    });
-  });
-  return res.join('');
+  // const lastIndex = Object.values(lettersObject).flat().length;
+  // const res = Array.from({ length: lastIndex }).fill('');
+
+  // Object.entries(lettersObject).forEach(([letter, positions]) => {
+  //   positions.forEach((position) => {
+  //     res[position] = letter;
+  //   });
+  // });
+  // return res.join('');
 }
 /**
  * There is a queue for tickets to a popular movie.
