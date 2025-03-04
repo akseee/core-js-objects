@@ -136,16 +136,6 @@ function makeWord(lettersObject) {
     []
   );
   return positions.join('');
-
-  // const lastIndex = Object.values(lettersObject).flat().length;
-  // const res = Array.from({ length: lastIndex }).fill('');
-
-  // Object.entries(lettersObject).forEach(([letter, positions]) => {
-  //   positions.forEach((position) => {
-  //     res[position] = letter;
-  //   });
-  // });
-  // return res.join('');
 }
 /**
  * There is a queue for tickets to a popular movie.
